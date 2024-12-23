@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import { View, Text, Button } from 'react-native';
-import { UserData } from './components/app_components';
+import { View, Text, Button, StyleSheet } from 'react-native';
+import appStyles from './styles/style';
 
 const Data = (value) => {
   return console.warn(value)
@@ -23,12 +23,22 @@ const User = (Name) => {
   console.log(Name.name)
   return (
     <View >
-      <Text style={{ fontSize: 40 }}>{Name.name}</Text>
+      <Text style={appStyles.textBox}>{Name.name}</Text>
 
     </View>
   )
 }
 
+const styles = StyleSheet.create({
+  textBox : [
+    {
+      paddingTop: 10,
+      fontSize: 20,
+      color: "blue",
+
+    }
+  ]
+})
 
 
 export default App;
