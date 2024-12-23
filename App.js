@@ -10,16 +10,23 @@ const Data = (value) => {
 function App() {
   const [name, setName] = useState("Hello");
 
-  function changeName() {
-    setName("Hello Ahsan");
-  }
   return (
     <View >
-    <Text style={{fontSize:20}}>{name}</Text>
-      <Button title='Press Here' onPress={() => { changeName() }}> </Button>
+      <Button title='Press Here' onPress={() => { setName("Hello Ahsan KKhan")}}> </Button>
+       <User name = {name} />
     </View>
   )
 
+}
+
+const User = (Name) => {
+  console.log(Name.name)
+  return (
+    <View >
+      <Text style={{ fontSize: 40 }}>{Name.name}</Text>
+
+    </View>
+  )
 }
 
 
