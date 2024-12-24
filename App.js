@@ -1,31 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TextInputComponent, TextInput, Button } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import appStyles from './styles/style';
-// import appStyles from './styles/style';
 
 function App() {
-const [data,setData] = useState(undefined);
+  const [data, setData] = useState([]);
 
-const getApi = async ()=>{
-  const url = "https://jsonplaceholder.typicode.com/posts";
-  let result = await fetch(url);
-  result = await result.json();
-  setData(result);
-  
-}
-  useEffect(()=>{
-   getApi();
-  },[])
+  const getApi = async () => {
+    const url = "https://jsonplaceholder.typicode.com/posts";
+    let result = await fetch(url);
+    result = await result.json();
+    setData(result);
+
+  }
+  useEffect(() => {
+    getApi();
+  }, [])
 
   return (
-    <View style={appStyles.View}>
+    <ScrollView>
       <Text style={appStyles.textBox}>Fetch API</Text>
-     data ?  <Text style={appStyles.textBox}>{data[0].id}</Text> : null;
-     data ?  <Text style={appStyles.textBox}>{data[0].title}</Text> : null;
-     data ?  <Text style={appStyles.textBox}>{data[0].body}</Text> : null;
+      {data.length ? data.map((item) => <View>
+        <Text style={appStyles.textBox}>Id : {item.id}</Text>
+        <Text style={appStyles.textBox}>Title: {item.title}</Text>
+        <Text style={appStyles.textBox} >Body : {item.body}</Text>
+      </View>
+      ) : null}
 
-    
-    </View>
+
+    </ScrollView>
   );
 }
 
