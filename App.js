@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, FlatList } from 'react-native';
 import appStyles from './styles/style';
 
 function App() {
@@ -19,12 +19,15 @@ function App() {
   return (
     <ScrollView>
       <Text style={appStyles.textBox}>Fetch API</Text>
-      {data.length ? data.map((item) => <View>
+      {data.length ? <FlatList data={data} renderItem={({ item }) => <View>         <Text style={appStyles.textBox}>Id : {item.id}</Text>
+        <Text style={appStyles.textBox}>Title: {item.title}</Text>
+        <Text style={appStyles.textBox} >Body : {item.body}</Text></View>}></FlatList> : null}
+      {/* {data.length ? data.map((item) => <View>
         <Text style={appStyles.textBox}>Id : {item.id}</Text>
         <Text style={appStyles.textBox}>Title: {item.title}</Text>
         <Text style={appStyles.textBox} >Body : {item.body}</Text>
       </View>
-      ) : null}
+      ) : null} */}
 
 
     </ScrollView>
